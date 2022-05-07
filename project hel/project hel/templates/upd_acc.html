@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обновление данных профиля</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upd_acc.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="form">
+        <form method="POST" >
+            {{ form.hidden_tag() }}
+
+        {{ form.upd_nick(id="newNick", placeholder="Новый ник, текущий - '{0}'".format(current_user.nick)) }} <br>
+        <br>
+        {{ form.upd_password(id="newPass", placeholder="Новый пароль") }} <br>
+        <br>
+        {{ form.submit(id="submit") }}
+
+        </form>
+    </div>
+    </div>
+
+
+    <div id="info" >
+        <hr>
+        <h3 id="head" >Инструкция</h3>
+        <img src="{{ url_for('static', filename='images/down.png') }}" alt="">
+        <h5 id="infoText" >Введите новый ник, и новый пароль!
+        </h5>
+        <a id="backMain"  href="/">на главную</a>
+    </div>
+
+
+
+
+    <div class="img">
+
+            <img style="padding: 20px;" src="{{ url_for('static', filename='images/men.png') }}">
+    </div>
+
+
+</body>
+</html>
