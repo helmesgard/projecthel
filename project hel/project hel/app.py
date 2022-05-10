@@ -129,6 +129,17 @@ def UpdateAcc(id):
 
     return render_template("upd_acc.html", form=form)
 
+@app.route("/support/", methods=['POST', 'GET'])
+def Support():
+	form = MailForm()
+	if form.validate_on_submit():
+		msg = Message("Grits Messenger Support", recipients=["helmesgard@yandex.kz"])
+		msg.body = f""" Пользователь ({form.sender.data}), отправил сообщение. Содержание: \n\n {form.message.data}"""
+		mail.send(msg)
+		flash("Сообщение успешно отправлено!")
+
+	return render_template("support.html", form=form)
+
 
 @app.route("/delete_acc/<int:id>/")
 @login_required
